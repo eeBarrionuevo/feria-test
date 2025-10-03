@@ -1,0 +1,22 @@
+{
+  "name": "feria-virtual-alumni-v2",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@iscodex/tailwindcss-animate": "^1.0.0",
+    "@tailwindcss/vite": "^4.1.13",
+    "aos": "^2.3.4",
+    "astro": "^5.14.1",
+    "tailwindcss": "^4.1.13",
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "devDependencies": {
+    "@types/aos": "^3.0.7"
+  }
+}

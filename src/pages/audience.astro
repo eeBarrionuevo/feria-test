@@ -1,0 +1,24 @@
+---
+import BasicLayout from "../layouts/BasicLayout.astro";
+---
+
+<BasicLayout>
+  <section
+    class="relative bg-cover bg-center min-h-screen flex items-center justify-center"
+    style="
+    background-image: url('https://wallpapers.com/images/featured/fondods-de-teatro-dhb5kq69nqqd8erp.jpg');
+  "
+  >
+    <div
+      class="w-full max-w-5xl aspect-video bg-black/80 rounded-xl overflow-hidden shadow-lg"
+    >
+      <iframe
+        class="w-full h-full"
+        src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+        title="YouTube video"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+    </div>
+  </section>
+</BasicLayout>

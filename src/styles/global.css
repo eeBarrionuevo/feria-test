@@ -1,0 +1,38 @@
+@import "tailwindcss";
+@import "@iscodex/tailwindcss-animate";
+
+
+@theme {
+  --font-dm: "DM Sans", sans-serif;
+  --font-al: "DM Sans", sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui;
+
+  --color-primary: #00b3e0;
+  --color-thirty: #87d328;
+  --color-secondary: #7f44d8;
+  --color-blime-bright: #D7FF61;
+  --color-purple-light: #ba6dfb;
+  --color-blavender: #d8bbfc;
+  --color-cyan: #00b3e0;
+  --color-green: #87d328;
+  --color-bpurple: #6c27d0;
+  --color-success: #87d328;
+  --color-info: #00b3e0;
+  --color-accent: #7f44d8;
+}
+
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@layer utilities {
+  .animate-marquee {
+    animation: marquee 20s linear infinite;
+  }
+}

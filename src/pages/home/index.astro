@@ -1,0 +1,494 @@
+---
+import Welcome from "../../components/Welcome.astro";
+import BasicLayout from "../../layouts/BasicLayout.astro";
+import Layout from "../../layouts/Layout.astro";
+import { logos } from "../../data/data.js";
+import imageRow from "../assets/images/image-row.png";
+import { companies, events, recommendations } from "../../data/data"; //
+import { Image } from "astro:assets";
+---
+
+<BasicLayout>
+  <section
+    class="max-w-6xl mx-auto text-white px-6 py-10 md:px-6 md:py-20"
+    aria-label="Sección de información general de la feria virtual de Alumni Tecsup"
+  >
+    <div>
+      <h2
+        class="text-2xl md:text-3xl font-extrabold leading-tight font-al mb-4"
+      >
+        Explora y participa en los webinars
+      </h2>
+
+      <div class="flex items-center gap-4">
+        <button
+          id="btn-empresas"
+          class="bg-black w-fit px-8 py-4 rounded-xl shadow-lg hover:bg-black/40"
+          onclick="showTab('empresas')"
+        >
+          <div class="flex items-center justify-center gap-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-6 h-6"
+              viewBox="0 0 24 24"
+              style="fill: rgb(255, 255, 255);transform: ;msFilter:;"
+              ><path
+                d="M19 2H9c-1.103 0-2 .897-2 2v5.586l-4.707 4.707A1 1 0 0 0 3 16v5a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V4c0-1.103-.897-2-2-2zm-8 18H5v-5.586l3-3 3 3V20zm8 0h-6v-4a.999.999 0 0 0 .707-1.707L9 9.586V4h10v16z"
+              ></path><path
+                d="M11 6h2v2h-2zm4 0h2v2h-2zm0 4.031h2V12h-2zM15 14h2v2h-2zm-8 1h2v2H7z"
+              ></path></svg
+            >
+            Empresas
+          </div>
+        </button>
+
+        <button
+          id="btn-webinars"
+          class="w-fit px-8 py-4 rounded-xl border-2 border-dashed border-gray-50 overflow-hidden shadow"
+          onclick="showTab('webinars')"
+        >
+          <div class="flex items-center justify-center gap-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-6 h-6"
+              viewBox="0 0 24 24"
+              style="fill: rgb(255, 255, 255);transform: ;msFilter:;"
+              ><path
+                d="M20 3H4c-1.103 0-2 .897-2 2v11c0 1.103.897 2 2 2h7v2H8v2h8v-2h-3v-2h7c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2zM4 14V5h16l.002 9H4z"
+              ></path></svg
+            >
+            Webinars
+          </div>
+        </button>
+      </div>
+
+      <div
+        id="empresas"
+        class="flex flex-col md:flex-row items-start justify-center gap-4 mt-6"
+      >
+        <div
+          class="flex-[4] w-full items-center justify-center bg-white/10 rounded-xl p-4"
+        >
+          <div>
+            <input
+              id="email"
+              type="email"
+              placeholder="Buscar empresa..."
+              class="w-full mb-4 bg-white text-sm rounded-lg h-10 px-2 placeholder-gray-500 focus:outline-none focus:ring-2"
+            />
+          </div>
+
+          <div
+            class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"
+          >
+            {
+              companies.map((item) => (
+                <div class="bg-white/5 flex flex-col items-start rounded-xl border-2 border-dashed border-gray-50 overflow-hidden shadow px-1 py-1">
+                  <div class="bg-white rounded-lg w-full">
+                    <Image
+                      src={item.image}
+                      alt={item.company}
+                      width={200}
+                      height={120}
+                      format="webp"
+                      class="w-full h-[90px] object-contain rounded-md"
+                    />
+                  </div>
+
+                  <p class="mt-2 mb-1 text-sm font-semibold text-white leading-4 line-clamp-2">
+                    {item.company}
+                  </p>
+
+                  <div class="flex items-center gap-1 mb-1">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="w-4 h-4"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                    >
+                      <path d="M15.78 15.84S18.64 13 19.61 12c3.07-3 1.54-9.18 1.54-9.18S15 1.29 12 4.36C9.66 6.64 8.14 8.22 8.14 8.22S4.3 7.42 2 9.72L14.25 22c2.3-2.33 1.53-6.16 1.53-6.16zm-1.5-9a2 2 0 0 1 2.83 0 2 2 0 1 1-2.83 0zM3 21a7.81 7.81 0 0 0 5-2l-3-3c-2 1-2 5-2 5z" />
+                    </svg>
+                    <p class="text-xs font-light text-white">
+                      {item.opportunities} oportunidades
+                    </p>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+
+        <div class="flex-[1] w-full bg-white/10 rounded-xl p-4">
+          <div class="text-lg font-bold mb-4">¡Tu webinar de ahora!</div>
+          <article
+            class="bg-black rounded-xl p-4 flex flex-col space-y-3 text-white"
+          >
+            <h2 class="text-base font-semibold leading-tight">
+              Potencia tu perfil en LinkedIn y atrae reclutadores
+            </h2>
+
+            <div class="flex items-center gap-2">
+              <img
+                src="https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg"
+                alt="Logo de Ferreyros"
+                loading="lazy"
+                class="w-6 h-6 rounded-full object-cover"
+              />
+              <span class="text-sm font-semibold">Ferreyros</span>
+            </div>
+
+            <div class="flex items-center gap-2 text-sm">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-4 h-4 flex-shrink-0"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 11h2v2H7zm0 4h2v2H7zm4-4h2v2h-2zm0 4h2v2h-2zm4-4h2v2h-2zm0 4h2v2h-2z"
+                ></path>
+                <path
+                  d="M5 22h14c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2h-2V2h-2v2H9V2H7v2H5c-1.103 
+      0-2 .897-2 2v14c0 1.103.897 2 2 2zM19 8l.001 12H5V8h14z"
+                ></path>
+              </svg>
+              <time datetime="2025-11-20">20 de noviembre</time>
+            </div>
+
+            <div class="flex items-center gap-2 text-sm">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-4 h-4 flex-shrink-0"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M12 2C6.486 2 2 6.486 2 12s4.486 
+      10 10 10 10-4.486 10-10S17.514 2 12 2zm0 
+      18c-4.411 0-8-3.589-8-8s3.589-8 
+      8-8 8 3.589 8 8-3.589 8-8 8z"
+                ></path>
+                <path
+                  d="M13 7h-2v5.414l3.293 
+      3.293 1.414-1.414L13 11.586z"
+                ></path>
+              </svg>
+              <time datetime="13:00">13:00</time>
+            </div>
+
+            <a
+              href="/audience"
+              class="flex items-center justify-center bg-blime-bright text-black px-4 py-1 rounded-full"
+            >
+              <div class="text-sm">Ir al auditorio</div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-6 h-6"
+                viewBox="0 0 24 24"
+                style="fill: black;transform: ;msFilter:;"
+                ><path
+                  d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"
+                ></path></svg
+              >
+            </a>
+          </article>
+
+          <div class="text-lg font-bold leading-5 my-6">
+            Recomendaciones para iniciar tu camino laboral
+          </div>
+
+          {
+            recommendations.map((item) => (
+              <article class="bg-white/10 rounded-xl px-2 py-3 text-sm my-2">
+                <div class="text-blime-bright/100 text-base font-semibold leading-6 mb-1">
+                  {item.title}
+                </div>
+                <div class="text-sm">{item.description}</div>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- Webinars -->
+
+      <div
+        id="webinars"
+        class="flex flex-col md:flex-row items-start justify-center gap-4 mt-6 hidden"
+      >
+        <div
+          class="flex-[4] w-full flex-col items-center bg-white/10 rounded-xl px-4 py-8"
+        >
+          <!-- Item 1 -->
+
+          <div
+            class="accordion w-full bg-white/10 py-2 border-2 border-dashed border-gray-50 rounded-xl mb-6"
+          >
+            <button
+              class="accordion-btn w-full flex justify-between items-center gap-3 px-4 py-3 text-left font-medium text-2xl text-white-700"
+            >
+              <div class="flex items-center justify-center gap-4">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-7 h-7"
+                  viewBox="0 0 24 24"
+                  style="fill: white;transform: ;msFilter:;"
+                  ><path
+                    d="M7 11h2v2H7zm0 4h2v2H7zm4-4h2v2h-2zm0 4h2v2h-2zm4-4h2v2h-2zm0 4h2v2h-2z"
+                  ></path><path
+                    d="M5 22h14c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2h-2V2h-2v2H9V2H7v2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2zM19 8l.001 12H5V8h14z"
+                  ></path></svg
+                >
+                27 de noviembre
+              </div>
+              <span class="icon transform transition-transform duration-300"
+                >▼</span
+              >
+            </button>
+            <div
+              class="accordion-content overflow-hidden transition-all duration-500 ease-in-out max-h-0 opacity-0"
+            >
+              {
+                events.map((event) => (
+                  <article class="bg-black text-white rounded-2xl shadow-xl mx-4 my-4 px-6 py-4 flex flex-col sm:flex-row items-center gap-2 sm:gap-6">
+                    <time
+                      datetime={`2025-11-27T${event.time}`}
+                      class="text-2xl sm:text-4xl font-bold"
+                    >
+                      {event.time}
+                    </time>
+
+                    <div class="flex-1 flex flex-col sm:flex-row items-center justify-between gap-6">
+                      <div class="flex flex-col">
+                        <h3 class="text-lg font-semibold leading-5">
+                          {event.title}
+                        </h3>
+
+                        <span class="text-sm font-semibold text-blime-bright mb-2">
+                          {event.company}
+                        </span>
+
+                        <div class="flex items-center gap-3">
+                          <img
+                            src={event.logo}
+                            alt={`Logo de ${event.company}`}
+                            loading="lazy"
+                            class="w-10 h-10 rounded-full object-cover"
+                          />
+                          <div>
+                            <p class="text-base">{event.speaker}</p>
+                            <p class="text-sm font-light text-blime-bright">
+                              {event.role}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <a
+                        href="/audience"
+                        class="flex-shrink-0 w-full sm:w-fit flex items-center justify-center gap-2 bg-blime-bright text-black px-4 py-2 rounded-full text-sm font-medium hover:bg-blime-bright/80 transition-colors"
+                      >
+                        Ir al auditorio
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="w-5 h-5"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                        >
+                          <path d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z" />
+                        </svg>
+                      </a>
+                    </div>
+                  </article>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+
+        <div class="flex-[1] w-full bg-white/10 rounded-xl p-4">
+          <div class="text-lg font-bold mb-4">¡Tu webinar de ahora!</div>
+          <article
+            class="bg-black rounded-xl p-4 flex flex-col space-y-3 text-white"
+          >
+            <h2 class="text-base font-semibold leading-tight">
+              Potencia tu perfil en LinkedIn y atrae reclutadores
+            </h2>
+
+            <div class="flex items-center gap-2">
+              <img
+                src="https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg"
+                alt="Logo de Ferreyros"
+                loading="lazy"
+                class="w-6 h-6 rounded-full object-cover"
+              />
+              <span class="text-sm font-semibold">Ferreyros</span>
+            </div>
+
+            <div class="flex items-center gap-2 text-sm">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-4 h-4 flex-shrink-0"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 11h2v2H7zm0 4h2v2H7zm4-4h2v2h-2zm0 4h2v2h-2zm4-4h2v2h-2zm0 4h2v2h-2z"
+                ></path>
+                <path
+                  d="M5 22h14c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2h-2V2h-2v2H9V2H7v2H5c-1.103 
+      0-2 .897-2 2v14c0 1.103.897 2 2 2zM19 8l.001 12H5V8h14z"
+                ></path>
+              </svg>
+              <time datetime="2025-11-20">20 de noviembre</time>
+            </div>
+
+            <div class="flex items-center gap-2 text-sm">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-4 h-4 flex-shrink-0"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M12 2C6.486 2 2 6.486 2 12s4.486 
+      10 10 10 10-4.486 10-10S17.514 2 12 2zm0 
+      18c-4.411 0-8-3.589-8-8s3.589-8 
+      8-8 8 3.589 8 8-3.589 8-8 8z"
+                ></path>
+                <path
+                  d="M13 7h-2v5.414l3.293 
+      3.293 1.414-1.414L13 11.586z"
+                ></path>
+              </svg>
+              <time datetime="13:00">13:00</time>
+            </div>
+
+            <a
+              href="/audience"
+              class="flex items-center justify-center bg-blime-bright text-black px-4 py-1 rounded-full"
+            >
+              <div class="text-sm">Ir al auditorio</div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-6 h-6"
+                viewBox="0 0 24 24"
+                style="fill: black;transform: ;msFilter:;"
+                ><path
+                  d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"
+                ></path></svg
+              >
+            </a>
+          </article>
+          <div class="text-lg font-bold leading-5 my-6">
+            Recomendaciones para iniciar tu camino laboral
+          </div>
+
+          {
+            recommendations.map((item) => (
+              <article class="bg-white/10 rounded-xl px-2 py-3 text-sm my-2">
+                <div class="text-blime-bright/100 text-base font-semibold leading-6 mb-1">
+                  {item.title}
+                </div>
+                <div class="text-sm">{item.description}</div>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- <div class="w-full max-w-md mx-auto">
+    <div
+      class="accordion border-2 border-dashed border-gray-400 rounded-xl mb-3"
+    >
+      <button
+        class="accordion-btn w-full flex justify-between items-center px-4 py-3 text-left font-medium text-gray-700"
+      >
+        ¿Qué es Astro?
+        <span class="icon transform transition-transform duration-300">▼</span>
+      </button>
+      <div
+        class="accordion-content overflow-hidden transition-all duration-500 ease-in-out max-h-0 opacity-0"
+      >
+        <div class="px-4 pb-4 text-gray-600">
+          Astro es un framework moderno que combina la simplicidad de HTML con
+          el poder de componentes. Permite crear sitios rápidos con renderizado
+          híbrido.
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="accordion border-2 border-dashed border-gray-400 rounded-xl mb-3"
+    >
+      <button
+        class="accordion-btn w-full flex justify-between items-center px-4 py-3 text-left font-medium text-gray-700"
+      >
+        ¿Qué es Tailwind?
+        <span class="icon transform transition-transform duration-300">▼</span>
+      </button>
+      <div
+        class="accordion-content overflow-hidden transition-all duration-500 ease-in-out max-h-0 opacity-0"
+      >
+        <div class="px-4 pb-4 text-gray-600">
+          Tailwind es un framework CSS utility-first que permite construir
+          diseños modernos con clases predefinidas, sin necesidad de escribir
+          CSS desde cero.
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <script type="module">
+    // 👉 Acordeón
+    document.querySelectorAll(".accordion-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const content = btn.nextElementSibling;
+        const icon = btn.querySelector(".icon");
+
+        if (!content) return;
+
+        if (content.style.maxHeight && content.style.maxHeight !== "0px") {
+          // 🔽 cerrar
+          content.style.maxHeight = "0px";
+          content.classList.remove("opacity-100");
+          content.classList.add("opacity-0");
+          if (icon) icon.classList.remove("rotate-180");
+        } else {
+          content.style.maxHeight = content.scrollHeight + "px";
+          content.classList.remove("opacity-0");
+          content.classList.add("opacity-100");
+          if (icon) icon.classList.add("rotate-180");
+        }
+      });
+    });
+
+    function showTab(tab) {
+      const sections = ["empresas", "webinars"];
+
+      sections.forEach((id) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        if (id === tab) {
+          el.classList.remove("hidden");
+        } else {
+          el.classList.add("hidden");
+        }
+      });
+
+      document.querySelectorAll("[data-tab]").forEach((btn) => {
+        if (btn.getAttribute("data-tab") === tab) {
+          btn.classList.add("bg-blue-600");
+          btn.classList.remove("bg-gray-700");
+        } else {
+          btn.classList.remove("bg-blue-600");
+          btn.classList.add("bg-gray-700");
+        }
+      });
+    }
+
+    window.showTab = showTab;
+  </script>
+</BasicLayout>
