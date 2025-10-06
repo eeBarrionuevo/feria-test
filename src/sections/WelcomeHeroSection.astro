@@ -2,6 +2,7 @@
 import feriaInfo from "../assets/images/feria-info.png";
 import feriaVideo from "../assets/images/feria-video.jpeg";
 import LinkButtonCommon from "../components/buttons/LinkButtonCommon.astro";
+import InputText from "../components/inputs/InputText.astro";
 ---
 
 <section
@@ -25,12 +26,13 @@ import LinkButtonCommon from "../components/buttons/LinkButtonCommon.astro";
         </p>
 
         <form action="" class="flex flex-col gap-3 mb-4">
-          <label for="email" class="text-sm">Correo electrónico Tecsup</label>
-          <input
+          <InputText
             id="email"
+            label="Correo electrónico Tecsup"
             type="email"
             placeholder="example@tecsup.edu.pe"
-            class="bg-white text-sm rounded-lg h-10 px-2 placeholder-gray-500 focus:outline-none focus:ring-2"
+            pattern="^[a-zA-Z0-9._%+-]+@tecsup\.edu\.pe$"
+            required
           />
           <LinkButtonCommon href="/home"> Ingresar </LinkButtonCommon>
         </form>
