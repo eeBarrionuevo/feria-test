@@ -1,11 +1,14 @@
 ---
-import tecsupLogo from "../../assets/images/tecsup-logo.png";
+import tecsupLogo from "../../assets/images/logo-tecsup.png";
+import alumniLogo from "../../assets/images/logo-alumni.png";
 ---
 
 <header class="bg-black text-white">
   <div class="max-w-6xl mx-auto px-4 py-4">
     <nav class="flex items-center justify-between">
-      <img src={tecsupLogo.src} alt="Logo Tecsup" class="h-8 md:h-12" />
+      <a href="/">
+        <img src={tecsupLogo.src} alt="Logo Tecsup" class="h-6 md:h-8" />
+      </a>
       <div class="flex gap-1 md:gap-2 items-center">
         <a href="" target="_blank">
           <svg
@@ -47,6 +50,12 @@ import tecsupLogo from "../../assets/images/tecsup-logo.png";
           >
         </a>
       </div>
+
+      <img
+        src={alumniLogo.src}
+        alt="Logo Alumni"
+        class="hidden md:block h-6 md:h-8"
+      />
     </nav>
   </div>
 </header>

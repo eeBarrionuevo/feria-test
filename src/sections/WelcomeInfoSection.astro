@@ -1,0 +1,72 @@
+---
+import imageRow from "../assets/images/image-row.png";
+import tLeft from "../assets/images/t-left.png";
+import tRight from "../assets/images/t-right.png";
+import WelcomeInfoItem from "../components/welcome/WelcomeInfoItem.astro";
+---
+
+<section
+  data-aos="fade-up"
+  data-aos-duration="1000"
+  class="text-white px-6 py-30"
+  aria-label="Sección de información general de la feria virtual de Alumni Tecsup"
+>
+
+  <img
+    src={tLeft.src}
+    alt=""
+    aria-hidden="true"
+    class="absolute top-0 left-0 w-24 md:w-30 opacity-20 -z-10"
+  />
+
+
+  <img
+    src={tRight.src}
+    alt=""
+    aria-hidden="true"
+    class="absolute top-0 right-0 w-24 md:w-30 opacity-20 -z-10"
+  />
+
+  <div class="max-w-6xl mx-auto">
+    <div
+      class="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-18 w-full"
+    >
+      <div class="w-full max-w-2xl">
+        <h2 class="text-3xl font-extrabold leading-tight font-al mb-4">
+          Feria virtual de Empleabilidad <br /> y Networking 2025
+        </h2>
+        <p class="font-light leading-snug my-4">
+          Nuestra feria reúne a profesionales, empresas y expertos del sector
+          para ofrecerte oportunidades de crecimiento profesional y networking.
+          Participa en talleres, charlas y sesiones interactivas diseñadas para
+          ayudarte a destacar en el competitivo mercado laboral.
+        </p>
+        <div class="flex items-center gap-1">
+          <img src={imageRow.src} alt="Imagen de una flecha" class="h-8" />
+          <img src={imageRow.src} alt="Imagen de una flecha" class="h-8" />
+        </div>
+      </div>
+
+      <div class="w-full max-w-2xl">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <WelcomeInfoItem
+            number={55}
+            description="empresas participantes con ofertas de trabajo activas"
+          />
+          <WelcomeInfoItem
+            number={20}
+            description="expertos impartiendo charlas y talleres"
+          />
+          <WelcomeInfoItem
+            number={900}
+            description="participantes conectandose desde diferentes ciudades"
+          />
+          <WelcomeInfoItem
+            number={3}
+            description="días de feria virtual lleno de oportunidades para avanzar"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

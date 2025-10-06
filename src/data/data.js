@@ -21,6 +21,33 @@ export const logos = [
   },
 ];
 
+export const welcomeWebinarInfo = [
+  {
+    id: 1,
+    image: "https://images.pexels.com/photos/32845698/pexels-photo-32845698.jpeg",
+    title: "ENTREVISTAS DE TRABAJO",
+    subtitle: "¿Quieres destacar en cada entrevista?",
+    description:
+      "¡Aprende cómo lograrlo! Nuestros webinars te brindarán técnicas y consejos prácticos para transmitir seguridad, confianza y mostrar tu mejor versión profesional.",
+  },
+  {
+    id: 2,
+    image: "https://images.pexels.com/photos/4254157/pexels-photo-4254157.jpeg",
+    title: "PRIMER EMPLEO EXITOSO",
+    subtitle: "¿Buscas dar el primer paso en tu carrera?",
+    description:
+      "Descubre estrategias efectivas para preparar tu CV, potenciar tu perfil en redes profesionales y enfrentar con éxito los primeros desafíos del mundo laboral.",
+  },
+  {
+    id: 3,
+    image: "https://images.pexels.com/photos/31869843/pexels-photo-31869843.jpeg",
+    title: "CREA TU MARCA PERSONAL",
+    subtitle: "Haz que tu talento hable por ti.",
+    description:
+      "Conoce cómo construir una marca profesional sólida, destacar tus habilidades y generar oportunidades laborales a través de tu presencia digital y autenticidad.",
+  },
+];
+
 export const companies = [
   {
     id: 1,
@@ -85,7 +112,7 @@ export const companies = [
       "https://www.manpowergroup.pe/wps/wcm/connect/manpowergroup/33fe94d4-3ca4-48ee-8842-6c1166ee515b/200x200-logo-manpower.jpg?MOD=AJPERES&CACHEID=ROOTWORKSPACE.Z18_2802IK01OORA70QUFIPQ192H31-33fe94d4-3ca4-48ee-8842-6c1166ee515b-mbU.Nf2",
     opportunities: 5,
   },
-    {
+  {
     id: 10,
     company: "Ferreyros",
     image:
@@ -106,120 +133,6 @@ export const companies = [
       "https://www.manpowergroup.pe/wps/wcm/connect/manpowergroup/33fe94d4-3ca4-48ee-8842-6c1166ee515b/200x200-logo-manpower.jpg?MOD=AJPERES&CACHEID=ROOTWORKSPACE.Z18_2802IK01OORA70QUFIPQ192H31-33fe94d4-3ca4-48ee-8842-6c1166ee515b-mbU.Nf2",
     opportunities: 5,
   },
-  // {
-  //   id: 4,
-  //   company: "Alicorp",
-  //   image: "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg",
-  //   opportunities: 3,
-  // },
-  // {
-  //   id: 5,
-  //   company: "Gloria",
-  //   image: "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg",
-  //   opportunities: 6,
-  // },
-  // {
-  //   id: 6,
-  //   company: "Southern Copper",
-  //   image: "https://images.pexels.com/photos/3182773/pexels-photo-3182773.jpeg",
-  //   opportunities: 2,
-  // },
-  // {
-  //   id: 7,
-  //   company: "BBVA",
-  //   image: "https://images.pexels.com/photos/2102416/pexels-photo-2102416.jpeg",
-  //   opportunities: 8,
-  // },
-  // {
-  //   id: 8,
-  //   company: "Interbank",
-  //   image: "https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg",
-  //   opportunities: 4,
-  // },
-  // {
-  //   id: 9,
-  //   company: "Banco de Crédito del Perú",
-  //   image: "https://images.pexels.com/photos/3184635/pexels-photo-3184635.jpeg",
-  //   opportunities: 6,
-  // },
-  // {
-  //   id: 10,
-  //   company: "LATAM Airlines",
-  //   image: "https://images.pexels.com/photos/912050/pexels-photo-912050.jpeg",
-  //   opportunities: 5,
-  // },
-  // {
-  //   id: 11,
-  //   company: "Cineplanet",
-  //   image: "https://images.pexels.com/photos/7991370/pexels-photo-7991370.jpeg",
-  //   opportunities: 3,
-  // },
-  // {
-  //   id: 12,
-  //   company: "Sodimac",
-  //   image: "https://images.pexels.com/photos/4483772/pexels-photo-4483772.jpeg",
-  //   opportunities: 7,
-  // },
-  // {
-  //   id: 13,
-  //   company: "Ripley",
-  //   image: "https://images.pexels.com/photos/3965545/pexels-photo-3965545.jpeg",
-  //   opportunities: 5,
-  // },
-  // {
-  //   id: 14,
-  //   company: "Falabella",
-  //   image: "https://images.pexels.com/photos/3184419/pexels-photo-3184419.jpeg",
-  //   opportunities: 9,
-  // },
-  // {
-  //   id: 15,
-  //   company: "InRetail",
-  //   image: "https://images.pexels.com/photos/5632398/pexels-photo-5632398.jpeg",
-  //   opportunities: 4,
-  // },
-  // {
-  //   id: 3,
-  //   company: "Telefónica",
-  //   image: "https://images.pexels.com/photos/3184454/pexels-photo-3184454.jpeg",
-  //   opportunities: 5,
-  // },
-  // {
-  //   id: 4,
-  //   company: "Alicorp",
-  //   image: "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg",
-  //   opportunities: 3,
-  // },
-  // {
-  //   id: 5,
-  //   company: "Gloria",
-  //   image: "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg",
-  //   opportunities: 6,
-  // },
-  // {
-  //   id: 6,
-  //   company: "Southern Copper",
-  //   image: "https://images.pexels.com/photos/3182773/pexels-photo-3182773.jpeg",
-  //   opportunities: 2,
-  // },
-  // {
-  //   id: 7,
-  //   company: "BBVA",
-  //   image: "https://images.pexels.com/photos/2102416/pexels-photo-2102416.jpeg",
-  //   opportunities: 8,
-  // },
-  // {
-  //   id: 8,
-  //   company: "Interbank",
-  //   image: "https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg",
-  //   opportunities: 4,
-  // },
-  // {
-  //   id: 9,
-  //   company: "Banco de Crédito del Perú",
-  //   image: "https://images.pexels.com/photos/3184635/pexels-photo-3184635.jpeg",
-  //   opportunities: 6,
-  //},
 ];
 
 export const events = [

@@ -1,0 +1,134 @@
+---
+import feriaInfo from "../assets/images/feria-info.png";
+import feriaVideo from "../assets/images/feria-video.jpeg";
+import LinkButtonCommon from "../components/buttons/LinkButtonCommon.astro";
+---
+
+<section
+  data-aos="fade-up"
+  data-aos-duration="1000"
+  class="max-w-6xl mx-auto text-white px-6 py-20"
+  aria-label="Sección inicial de la feria virtual de Alumni Tecsup"
+>
+  <div
+    class="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-24 w-full"
+  >
+    <div class="w-full max-w-2xl order-2 md:order-1">
+      <div
+        class="bg-white/10 rounded-3xl border-dashed border-gray-50 border-[2px] px-6 py-12 md:px-14 md:py-12"
+      >
+        <h2 class="text-2xl font-medium leading-tight text-center mb-2">
+          Conéctate con empresas <br />que buscan tu talento
+        </h2>
+        <p class="text-base font-light text-center mb-6">
+          ¡Prepárate para participar en la Feria <br /> Laboral Virtual Tecsup!
+        </p>
+
+        <form action="" class="flex flex-col gap-3 mb-4">
+          <label for="email" class="text-sm">Correo electrónico Tecsup</label>
+          <input
+            id="email"
+            type="email"
+            placeholder="example@tecsup.edu.pe"
+            class="bg-white text-sm rounded-lg h-10 px-2 placeholder-gray-500 focus:outline-none focus:ring-2"
+          />
+          <LinkButtonCommon href="/home"> Ingresar </LinkButtonCommon>
+        </form>
+
+        <p class="text-base font-light text-center">
+          ¿No te has registrado aún?
+          <a href="/register" class="text-blime-bright font-bold">Regístrate</a>
+        </p>
+      </div>
+    </div>
+
+    <div
+      class="w-full max-w-2xl flex flex-col items-center justify-center gap-2 text-center order-1 md:order-2"
+    >
+      <!-- <div
+          class="text-lg bg-blime-bright text-black font-bold w-fit px-4 rounded-full"
+        >
+          2025
+        </div> -->
+      <img src={feriaInfo.src} alt="Feria info" class="h-24" />
+      <h1 class="sr-only text-4xl font-extrabold leading-tight font-al">
+        FERIA VIRTUAL <br />ALUMNI TECSUP
+      </h1>
+      <div class="flex items-center gap-2 mb-2">
+        <div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            style="fill: rgb(255, 255, 255);transform: ;msFilter:;"
+            ><path
+              d="M7 11h2v2H7zm0 4h2v2H7zm4-4h2v2h-2zm0 4h2v2h-2zm4-4h2v2h-2zm0 4h2v2h-2z"
+            ></path><path
+              d="M5 22h14c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2h-2V2h-2v2H9V2H7v2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2zM19 8l.001 12H5V8h14z"
+            ></path></svg
+          >
+        </div>
+        <time datetime="2025-11-25" class="text-lg font-bold block italic">
+          Del 25 al 27 de noviembre
+        </time>
+      </div>
+
+      <div
+        id="videoThumbnail"
+        class="relative w-full max-h-[220px] rounded-xl overflow-hidden shadow cursor-pointer group"
+        data-video-id="dQw4w9WgXcQ"
+      >
+        <img
+          src={feriaVideo.src}
+          alt="Auditorio virtual de la feria"
+          class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+        />
+
+        <div
+          class="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition"
+        >
+        </div>
+
+        <div class="absolute inset-0 flex items-center justify-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-16 h-16 text-white opacity-90 group-hover:opacity-100 transition"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path d="M8 5v14l11-7z"></path>
+          </svg>
+        </div>
+      </div>
+
+      <p class="font-light leading-snug mt-4">
+        Conecta con empresas y oportunidades exclusivas para estudiantes y
+        egresados Tecsup, desde tu celular, tablet o computadora.
+      </p>
+    </div>
+  </div>
+</section>
+
+<script>
+  function initVideoThumbnail() {
+    const thumbnail = document.getElementById("videoThumbnail");
+
+    if (thumbnail) {
+      thumbnail.addEventListener("click", () => {
+        const videoId = thumbnail.dataset.videoId;
+
+        if (videoId) {
+          const event = new CustomEvent("openVideo", {
+            detail: { videoId },
+          });
+          document.dispatchEvent(event);
+        }
+      });
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", initVideoThumbnail);
+
+  document.addEventListener("astro:after-swap", initVideoThumbnail);
+</script>

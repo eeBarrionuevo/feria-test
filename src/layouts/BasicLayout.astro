@@ -51,6 +51,43 @@ import "../styles/global.css";
         ></path>
       </svg>
     </a>
+
+    <div
+      id="videoModal"
+      class="fixed inset-0 bg-black/90 z-50 hidden items-center justify-center p-4"
+    >
+      <button
+        id="closeModal"
+        class="absolute top-4 right-4 text-white hover:text-gray-300 transition z-10"
+        aria-label="Cerrar video"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-8 h-8"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+
+      <div class="w-full max-w-6xl aspect-video">
+        <iframe
+          id="youtubeIframe"
+          class="w-full h-full rounded-lg"
+          src=""
+          title="Video de YouTube"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+      </div>
+    </div>
+
     <script>
       import AOS from "aos";
       import "aos/dist/aos.css";
@@ -62,10 +99,82 @@ import "../styles/global.css";
           mirror: false,
           offset: 50,
         });
+        initVideoModal();
       });
 
       document.addEventListener("astro:after-swap", () => {
         AOS.refresh();
+        initVideoModal();
+      });
+
+      function openVideoModal(videoId: string) {
+        const modal = document.getElementById("videoModal");
+        const iframe = document.getElementById(
+          "youtubeIframe"
+        ) as HTMLIFrameElement;
+
+        if (modal && iframe) {
+          iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+          modal.classList.remove("hidden");
+          modal.classList.add("flex");
+          document.body.style.overflow = "hidden";
+        }
+      }
+
+      function closeVideoModal() {
+        const modal = document.getElementById("videoModal");
+        const iframe = document.getElementById(
+          "youtubeIframe"
+        ) as HTMLIFrameElement;
+
+        if (modal && iframe) {
+          modal.classList.add("hidden");
+          modal.classList.remove("flex");
+          iframe.src = "";
+          document.body.style.overflow = "";
+        }
+      }
+
+      function initVideoModal() {
+        // Botón cerrar
+        const closeBtn = document.getElementById("closeModal");
+        if (closeBtn) {
+          closeBtn.removeEventListener("click", closeVideoModal);
+          closeBtn.addEventListener("click", closeVideoModal);
+        }
+
+        const modal = document.getElementById("videoModal");
+        if (modal) {
+          modal.removeEventListener("click", handleModalClick);
+          modal.addEventListener("click", handleModalClick);
+        }
+
+        document.removeEventListener(
+          "openVideo",
+          handleOpenVideo as EventListener
+        );
+        document.addEventListener(
+          "openVideo",
+          handleOpenVideo as EventListener
+        );
+      }
+
+      function handleModalClick(e: Event) {
+        if (e.target === e.currentTarget) {
+          closeVideoModal();
+        }
+      }
+
+      function handleOpenVideo(e: CustomEvent) {
+        openVideoModal(e.detail.videoId);
+      }
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          const modal = document.getElementById("videoModal");
+          if (modal && !modal.classList.contains("hidden")) {
+            closeVideoModal();
+          }
+        }
       });
     </script>
   </body>

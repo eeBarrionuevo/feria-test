@@ -1,0 +1,21 @@
+---
+import { logos } from "../data/data.js";
+---
+
+  <section class="w-full h-[100px] bg-white overflow-hidden relative">
+    <div class="absolute top-0 left-0 w-full h-full flex items-center">
+      <div class="flex animate-marquee space-x-16">
+        {
+          logos.map((logo) => (
+            <img src={logo.src} alt={logo.name} class="h-12 w-auto" />
+          ))
+        }
+
+        {
+          logos.map((logo) => (
+            <img src={logo.src} alt={logo.name} class="h-12 w-auto" />
+          ))
+        }
+      </div>
+    </div>
+  </section>

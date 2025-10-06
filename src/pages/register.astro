@@ -1,168 +1,227 @@
 ---
 import BasicLayout from "../layouts/BasicLayout.astro";
+import tLeft from "../assets/images/t-left.png";
+import tRight from "../assets/images/t-right.png";
+import InputText from "../components/inputs/InputText.astro";
+import SelectText from "../components/inputs/SelectText.astro";
+import InputFile from "../components/inputs/InputFile.astro";
+import ButtonCommon from "../components/buttons/ButtonCommon.astro";
 ---
 
 <BasicLayout>
-  <section class="max-w-6xl mx-auto text-white px-6 py-20">
-    <div class="flex flex-col items-center text-center">
-      <h2
-        class="text-2xl md:text-3xl font-extrabold leading-tight font-al mb-4"
-      >
-        Regístrate para participar
-      </h2>
+  <section class="text-white px-6 py-20">
+    <img
+      src={tLeft.src}
+      alt=""
+      aria-hidden="true"
+      class="absolute top-16 left-0 w-18 md:w-30 opacity-20 -z-10"
+    />
 
-      <h3 class="text-sm font-light text-center mb-8">
-        Por favor, completa la siguiente información
-      </h3>
+    <img
+      src={tRight.src}
+      alt=""
+      aria-hidden="true"
+      class="absolute top-16 right-0 w-18 md:w-30 opacity-20 -z-10"
+    />
 
-      <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div class="flex flex-col items-start gap-3">
-          <label for="email" class="text-sm">Correo electrónico Tecsup</label>
-          <input
-            id="email"
-            type="email"
-            placeholder="example@tecsup.edu.pe"
-            class="w-full bg-white text-sm rounded-lg h-10 px-2 placeholder-gray-500 focus:outline-none focus:ring-2"
-          />
-        </div>
-        <div class="flex flex-col items-start gap-3">
-          <label for="email" class="text-sm">Correo electrónico Tecsup</label>
-          <input
-            id="email"
-            type="email"
-            placeholder="example@tecsup.edu.pe"
-            class="w-full bg-white text-sm rounded-lg h-10 px-2 placeholder-gray-500 focus:outline-none focus:ring-2"
-          />
-        </div>
-        <div class="flex flex-col items-start gap-3">
-          <label for="email" class="text-sm">Correo electrónico Tecsup</label>
-          <input
-            id="email"
-            type="email"
-            placeholder="example@tecsup.edu.pe"
-            class="w-full bg-white text-sm rounded-lg h-10 px-2 placeholder-gray-500 focus:outline-none focus:ring-2"
-          />
-        </div>
-        <div class="flex flex-col items-start gap-3">
-          <label for="email" class="text-sm">Correo electrónico Tecsup</label>
-          <input
-            id="email"
-            type="email"
-            placeholder="example@tecsup.edu.pe"
-            class="w-full bg-white text-sm rounded-lg h-10 px-2 placeholder-gray-500 focus:outline-none focus:ring-2"
-          />
-        </div>
-        <div class="flex flex-col items-start gap-3">
-          <label for="email" class="text-sm">Correo electrónico Tecsup</label>
-          <input
-            id="email"
-            type="email"
-            placeholder="example@tecsup.edu.pe"
-            class="w-full bg-white text-sm rounded-lg h-10 px-2 placeholder-gray-500 focus:outline-none focus:ring-2"
-          />
-        </div>
-        <div class="flex flex-col items-start gap-3">
-          <label for="email" class="text-sm">Correo electrónico Tecsup</label>
-          <input
-            id="email"
-            type="email"
-            placeholder="example@tecsup.edu.pe"
-            class="w-full bg-white text-sm rounded-lg h-10 px-2 placeholder-gray-500 focus:outline-none focus:ring-2"
-          />
-        </div>
-        <div class="flex flex-col items-start gap-3">
-          <label for="email" class="text-sm">Correo electrónico Tecsup</label>
-          <input
-            id="email"
-            type="email"
-            placeholder="example@tecsup.edu.pe"
-            class="w-full bg-white text-sm rounded-lg h-10 px-2 placeholder-gray-500 focus:outline-none focus:ring-2"
-          />
-        </div>
-        <div class="flex flex-col items-start gap-3">
-          <label for="email" class="text-sm">Correo electrónico Tecsup</label>
-          <input
-            id="email"
-            type="email"
-            placeholder="example@tecsup.edu.pe"
-            class="w-full bg-white text-sm rounded-lg h-10 px-2 placeholder-gray-500 focus:outline-none focus:ring-2"
-          />
-        </div>
-        <div class="flex flex-col items-start gap-3">
-          <label for="email" class="text-sm">Correo electrónico Tecsup</label>
-          <input
-            id="email"
-            type="email"
-            placeholder="example@tecsup.edu.pe"
-            class="w-full bg-white text-sm rounded-lg h-10 px-2 placeholder-gray-500 focus:outline-none focus:ring-2"
-          />
-        </div>
-        <div class="flex flex-col items-start gap-3">
-          <label for="email" class="text-sm">Correo electrónico Tecsup</label>
-          <input
-            id="email"
-            type="email"
-            placeholder="example@tecsup.edu.pe"
-            class="w-full bg-white text-sm rounded-lg h-10 px-2 placeholder-gray-500 focus:outline-none focus:ring-2"
-          />
-        </div>
-      </div>
-
-
-      <label
-        for="cv-upload"
-        class="w-full bg-white/10 rounded-3xl border-2 border-dashed border-gray-50 mt-8 mb-6 px-4 py-4 text-center flex flex-col items-center justify-center cursor-pointer"
-      >
-        <h3 class="text-lg font-bold mb-2">SUBE TU CV Y PARTICIPA</h3>
-
-        <p class="text-sm mb-2">
-          ¡No dejes pasar la oportunidad! Comparte tu CV en la Feria Laboral
-          Virtual <br /> y postula directamente a las ofertas disponibles.
-        </p>
-
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="w-14 h-12"
-          viewBox="0 0 24 24"
-          style="fill: rgb(255, 255, 255);"
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-col items-center text-center">
+        <h2
+          class="text-2xl md:text-3xl font-extrabold leading-tight font-al mb-4"
         >
-          <path d="M13 19v-4h3l-4-5-4 5h3v4z"></path>
-          <path
-            d="M7 19h2v-2H7c-1.654 0-3-1.346-3-3 0-1.404 1.199-2.756 2.673-3.015l.581-.102.192-.558C8.149 8.274 9.895 7 12 7c2.757 0 5 2.243 5 5v1h1c1.103 0 2 .897 2 2s-.897 2-2 2h-3v2h3c2.206 0 4-1.794 4-4a4.01 4.01 0 0 0-3.056-3.888C18.507 7.67 15.56 5 12 5 9.244 5 6.85 6.611 5.757 9.15 3.609 9.792 2 11.82 2 14c0 2.757 2.243 5 5 5z"
-          ></path>
-        </svg>
+          Regístrate para participar
+        </h2>
 
-        <span class="text-sm">Archivo .PDF / max. 5mb</span>
+        <h3 class="text-sm font-light text-center mb-8">
+          Por favor, completa la siguiente información
+        </h3>
 
+        <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+          <InputText
+            id="email"
+            label="Correo electrónico Tecsup"
+            type="email"
+            placeholder="example@tecsup.edu.pe"
+            pattern="^[a-zA-Z0-9._%+-]+@tecsup\.edu\.pe$"
+            required
+          />
 
-        <input
+          <InputText
+            id="fistName"
+            label="Nombres"
+            type="text"
+            placeholder="Juan Carlos"
+            required
+          />
+
+          <InputText
+            id="lastName"
+            label="Apellidos"
+            type="text"
+            placeholder="Juan Carlos"
+            required
+          />
+
+          <InputText
+            id="dni"
+            label="DNI"
+            type="text"
+            placeholder="00000000"
+            required
+            minLength={8}
+            maxLength={8}
+            errorMessage="El DNI debe tener exactamente 8 dígitos"
+            autocomplete="off"
+            pattern="[0-9]{8}"
+          />
+
+          <InputText
+            id="phone"
+            label="Teléfono"
+            type="phone"
+            placeholder="000000000"
+            required
+            minLength={9}
+            maxLength={9}
+            errorMessage="El teléfono debe tener exactamente 9 dígitos"
+            autocomplete="off"
+            pattern="[0-9]{9}"
+          />
+
+          <SelectText
+            id="sede"
+            label="Sede Tecsup"
+            placeholder="Selecciona tu sede"
+            options={[
+              { value: "lima", label: "Lima" },
+              { value: "arequipa", label: "Arequipa" },
+              { value: "trujillo", label: "Trujillo" },
+            ]}
+            helperText="Elige la sede donde estudias"
+          />
+
+          <SelectText
+            id="estado"
+            label="¿Alumno o Egresado?"
+            placeholder="Selecciona tu sede"
+            options={[
+              { value: "alumno", label: "Alumno" },
+              { value: "egresado", label: "Egresado" },
+            ]}
+            helperText="Elige tu estado"
+          />
+
+          <SelectText
+            id="carrera"
+            label="Carrera"
+            placeholder="Selecciona tu carrera"
+            options={[
+              {
+                value: "administracion_sistemas",
+                label: "Administración de Tecnologías de la Información",
+              },
+              { value: "automatizacion", label: "Automatización Industrial" },
+              { value: "biotecnologia", label: "Biotecnología" },
+              { value: "diseno_industrial", label: "Diseño Industrial" },
+              {
+                value: "diseno_grafico",
+                label: "Diseño y Desarrollo de Videojuegos",
+              },
+              {
+                value: "desarrollo_software",
+                label: "Diseño y Desarrollo de Software",
+              },
+              {
+                value: "electricidad_industrial",
+                label: "Electricidad Industrial",
+              },
+              { value: "electronica", label: "Electrónica Industrial" },
+              {
+                value: "gestion_ambiental",
+                label: "Gestión y Mantenimiento de Maquinaria Pesada",
+              },
+              {
+                value: "ingenieria_ambiental",
+                label: "Gestión y Seguridad Industrial",
+              },
+              {
+                value: "mantenimiento_mecanico",
+                label: "Mantenimiento Mecánico de Planta",
+              },
+              { value: "mecanica_automotriz", label: "Mecatrónica Automotriz" },
+              { value: "mecatronica", label: "Mecatrónica Industrial" },
+              { value: "mineria", label: "Minería" },
+              {
+                value: "produccion_industrial",
+                label: "Procesos de Producción Industrial",
+              },
+              { value: "quimica_industrial", label: "Química Industrial" },
+              {
+                value: "redes_y_seguridad",
+                label: "Redes y Seguridad Informática",
+              },
+              {
+                value: "tecnologia_digital",
+                label: "Tecnología Digital e Innovación",
+              },
+              { value: "tecnologias_mineras", label: "Tecnologías Mineras" },
+              { value: "telecomunicaciones", label: "Telecomunicaciones" },
+            ]}
+            helperText="Elige tu estado"
+          />
+
+          <SelectText
+            id="egreso"
+            label="Año de egreso"
+            placeholder="Selecciona tu año de egreso"
+            options={[
+              { value: "1980", label: "1980" },
+              { value: "1981", label: "1981" },
+              { value: "1982", label: "1982" },
+              { value: "1983", label: "1983" },
+              { value: "1984", label: "1984" },
+              { value: "1985", label: "1985" },
+
+              { value: "2024", label: "2024" },
+              { value: "2025", label: "2025" },
+            ]}
+            helperText="Elige tu estado"
+          />
+        </div>
+
+        <InputFile
           id="cv-upload"
-          type="file"
+          title="SUBE TU CV Y PARTICIPA"
+          description="¡No dejes pasar la oportunidad! Comparte tu CV en la Feria Laboral Virtual <br /> y postula directamente a las ofertas disponibles."
           accept="application/pdf"
-          class="hidden"
+          maxSize={5}
+          required
         />
-      </label>
 
-      
-      <div class="flex items-center justify-center gap-2">
-        <input
-          type="checkbox"
-          class="appearance-none w-5 h-5 border border-gray-300 rounded bg-white
+        <div class="flex items-center justify-center gap-2 my-8">
+          <input
+            type="checkbox"
+            class="appearance-none w-15 h-5 border border-gray-300 rounded bg-white
          checked:bg-green-500 checked:border-green-500
          checked:before:content-['✔'] checked:before:text-white checked:before:flex checked:before:items-center checked:before:justify-center"
-        />
-        <div class="text-sm">
-          Autorizo el uso de mis datos personales para fines relacionados con la
-          Feria Laboral Virtual, según lo indicado en las Políticas de
-          Privacidad.
+          />
+          <div class="text-sm text-left">
+            Al completar este formulario autorizas a TECSUP N°1 y a ASOCIACION
+            TECSUP N°2 a usar tus datos personales únicamente para fines de
+            seguimiento de egresados, empleabilidad y comunicación
+            institucional. Tu información será guardada de manera segura en
+            nuestra plataforma JOINTEC y no será compartida para otros fines.
+            Recuerda que, de acuerdo con la Ley de Protección de Datos
+            Personales, puedes en cualquier momento acceder, actualizar o
+            solicitar la eliminación de tus datos escribiendo a
+            datospersonales@tecsup.edu.pe
+          </div>
         </div>
+
+        <ButtonCommon type="submit" id="register" size="md" className="w-full md:w-80">
+          Registrarse
+        </ButtonCommon>
       </div>
-      <button
-        type="submit"
-        class="w-60 bg-black h-12 rounded-lg hover:bg-gray-900 transition mt-4"
-      >
-        Registrar
-      </button>
     </div>
   </section>
 </BasicLayout>

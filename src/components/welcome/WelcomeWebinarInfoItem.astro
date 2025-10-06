@@ -1,0 +1,26 @@
+---
+
+const {image, title, subtitle, description} = Astro.props;
+
+---
+
+
+<article
+  class="bg-white/10 rounded-3xl border-2 border-dashed border-gray-50 overflow-hidden shadow p-3"
+>
+  <img
+    src={image}
+    alt="Persona en una entrevista laboral"
+    class="w-full max-h-[200px] object-cover rounded-2xl"
+  />
+
+  <div class="p-2 flex flex-col items-start gap-2">
+    <h4 class="text-base font-bold text-blime-bright">
+      {title}
+    </h4>
+    <p class="text-sm font-semibold">{subtitle}</p>
+    <p class="text-sm font-light text-left">
+      {description}
+    </p>
+  </div>
+</article>

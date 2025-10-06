@@ -1,0 +1,144 @@
+---
+interface Option {
+  value: string;
+  label: string;
+  disabled?: boolean;
+}
+
+interface Props {
+  id: string;
+  label: string;
+  options: Option[];
+  placeholder?: string;
+  required?: boolean;
+  disabled?: boolean;
+  value?: string;
+  helperText?: string;
+  errorMessage?: string;
+  className?: string;
+}
+
+const {
+  id,
+  label,
+  options,
+  placeholder = 'Selecciona una opción',
+  required = false,
+  disabled = false,
+  value = '',
+  helperText,
+  errorMessage,
+  className = '',
+} = Astro.props;
+
+const helperId = `${id}-helper`;
+const errorId = `${id}-error`;
+---
+
+<div class={`flex flex-col items-start gap-3 ${className}`}>
+  <label for={id} class="text-sm font-medium">
+    {label}
+    {required && <span class="text-red-500 ml-1">*</span>}
+  </label>
+  
+  <div class="relative w-full">
+    <select
+      id={id}
+      name={id}
+      required={required}
+      disabled={disabled}
+      aria-describedby={helperText ? helperId : errorMessage ? errorId : undefined}
+      aria-invalid="false"
+      class="w-full bg-white text-sm rounded-lg h-10 px-3 pr-10 appearance-none
+             border border-gray-300 transition-all duration-200
+             focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
+             disabled:bg-gray-100 disabled:cursor-not-allowed disabled:text-gray-500
+             invalid:border-red-500 invalid:ring-red-500
+             cursor-pointer text-gray-900"
+    >
+      {placeholder && (
+        <option value="" disabled selected={!value} class="text-gray-500">
+          {placeholder}
+        </option>
+      )}
+      
+      {options.map((option) => (
+        <option
+          value={option.value}
+          disabled={option.disabled}
+          selected={value === option.value}
+        >
+          {option.label}
+        </option>
+      ))}
+    </select>
+
+
+    <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+      <svg
+        class="w-4 h-4 text-gray-500"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+          clip-rule="evenodd"
+        />
+      </svg>
+    </div>
+  </div>
+
+
+
+  <p id={errorId} class="text-xs text-red-600 hidden error-message">
+    {errorMessage || 'Debes seleccionar una opción'}
+  </p>
+</div>
+
+<script>
+  function initSelectValidation() {
+    const selects = document.querySelectorAll('select[id]');
+    
+    selects.forEach((select) => {
+      if (!(select instanceof HTMLSelectElement)) return;
+      
+      const errorElement = document.getElementById(`${select.id}-error`);
+      
+
+      select.addEventListener('change', () => {
+        validateSelect(select, errorElement);
+      });
+
+
+      select.addEventListener('blur', () => {
+        validateSelect(select, errorElement);
+      });
+    });
+  }
+
+  function validateSelect(select: HTMLSelectElement, errorElement: HTMLElement | null) {
+    const isValid = select.checkValidity();
+    
+    if (!isValid && errorElement) {
+      let message = errorElement.textContent || 'Debes seleccionar una opción';
+      
+      if (select.validity.valueMissing) {
+        message = 'Este campo es obligatorio';
+      }
+      
+      errorElement.textContent = message;
+      errorElement.classList.remove('hidden');
+      select.setAttribute('aria-invalid', 'true');
+      select.classList.add('border-red-500');
+    } else if (errorElement) {
+      errorElement.classList.add('hidden');
+      select.setAttribute('aria-invalid', 'false');
+      select.classList.remove('border-red-500', 'ring-red-500');
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', initSelectValidation);
+  document.addEventListener('astro:after-swap', initSelectValidation);
+</script>

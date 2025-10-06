@@ -1,0 +1,140 @@
+---
+const {
+  id,
+  label,
+  type = "text",
+  placeholder = "",
+  required = false,
+  disabled = false,
+  pattern = undefined,
+  minLength = undefined,
+  maxLength = undefined,
+  min = undefined,
+  max = undefined,
+  value = "",
+  autocomplete = undefined,
+  helperText = undefined,
+  errorMessage = undefined,
+  className = "",
+} = Astro.props;
+
+const helperId = `${id}-helper`;
+const errorId = `${id}-error`;
+---
+
+<div class={`flex flex-col items-start gap-3 ${className}`}>
+  <label for={id} class="text-sm font-medium">
+    {label}
+    {required && <span class="text-pink-500 ml-1">*</span>}
+  </label>
+
+  <input
+    id={id}
+    name={id}
+    type={type}
+    placeholder={placeholder}
+    required={required}
+    disabled={disabled}
+    pattern={pattern}
+    minlength={minLength}
+    maxlength={maxLength}
+    min={min}
+    max={max}
+    value={value}
+    autocomplete={autocomplete}
+    aria-describedby={helperText
+      ? helperId
+      : errorMessage
+        ? errorId
+        : undefined}
+    aria-invalid="false"
+    class="w-full text-black bg-white text-sm rounded-lg h-10 px-3 placeholder-gray-500
+           border border-gray-300 transition-all duration-200
+           focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
+           disabled:bg-gray-100 disabled:cursor-not-allowed disabled:text-gray-500
+           invalid:border-red-500 invalid:ring-red-500"
+  />
+
+  {
+    helperText && (
+      <p id={helperId} class="text-xs text-gray-600">
+        {helperText}
+      </p>
+    )
+  }
+
+  <p id={errorId} class="text-xs text-pink-400 hidden error-message">
+    {errorMessage || "Este campo tiene un error"}
+  </p>
+</div>
+
+<script>
+  function initInputValidation() {
+    const inputs = document.querySelectorAll("input[id]");
+
+    inputs.forEach((input) => {
+      if (!(input instanceof HTMLInputElement)) return;
+
+      const errorElement = document.getElementById(`${input.id}-error`);
+
+      input.addEventListener("blur", () => {
+        validateInput(input, errorElement);
+      });
+
+      input.addEventListener("input", () => {
+        if (errorElement && !errorElement.classList.contains("hidden")) {
+          errorElement.classList.add("hidden");
+          input.setAttribute("aria-invalid", "false");
+          input.classList.remove("border-red-500", "ring-red-500");
+        }
+      });
+    });
+  }
+
+  function validateInput(
+    input: HTMLInputElement,
+    errorElement: HTMLElement | null
+  ) {
+    const isValid = input.checkValidity();
+
+    if (!isValid && errorElement) {
+
+      let message = errorElement.textContent || "Este campo tiene un error";
+
+      if (input.validity.valueMissing) {
+        message = "Este campo es obligatorio";
+      } else if (input.validity.typeMismatch) {
+        if (input.type === "email") {
+          message = "Ingresa un correo electrónico válido";
+        } else if (input.type === "url") {
+          message = "Ingresa una URL válida";
+        }
+      } else if (input.validity.patternMismatch) {
+        message =
+          errorElement.getAttribute("data-pattern-message") ||
+          "El formato no es válido";
+      } else if (input.validity.tooShort) {
+        message = `Debe tener al menos ${input.minLength} caracteres`;
+      } else if (input.validity.tooLong) {
+        message = `No debe exceder ${input.maxLength} caracteres`;
+      } else if (input.validity.rangeUnderflow) {
+        message = `El valor mínimo es ${input.min}`;
+      } else if (input.validity.rangeOverflow) {
+        message = `El valor máximo es ${input.max}`;
+      }
+
+      errorElement.textContent = message;
+      errorElement.classList.remove("hidden");
+      input.setAttribute("aria-invalid", "true");
+      input.classList.add("border-red-500");
+    } else if (errorElement) {
+      errorElement.classList.add("hidden");
+      input.setAttribute("aria-invalid", "false");
+      input.classList.remove("border-red-500", "ring-red-500");
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", initInputValidation);
+
+  document.addEventListener("astro:after-swap", initInputValidation);
+</script>

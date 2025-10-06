@@ -1,0 +1,91 @@
+---
+interface Props {
+  href: string;
+  variant?:
+    | "primary"
+    | "secondary"
+    | "outline"
+    | "danger"
+    | "success"
+    | "ghost";
+  size?: "sm" | "md" | "lg";
+  fullWidth?: boolean;
+  disabled?: boolean;
+  target?: "_blank" | "_self" | "_parent" | "_top";
+  className?: string;
+  id?: string;
+}
+
+const {
+  href,
+  variant = "primary",
+  size = "md",
+  fullWidth = false,
+  disabled = false,
+  target,
+  className = "",
+  id,
+} = Astro.props;
+
+const variants = {
+  primary: "bg-black text-white hover:bg-gray-900 focus:ring-gray-800",
+  secondary: "bg-gray-600 text-white hover:bg-gray-700 focus:ring-gray-500",
+  outline:
+    "bg-transparent border-2 border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white focus:ring-gray-800",
+  danger: "bg-red-600 text-white hover:bg-red-700 focus:ring-red-500",
+  success: "bg-green-600 text-white hover:bg-green-700 focus:ring-green-500",
+  ghost: "bg-transparent text-gray-900 hover:bg-gray-100 focus:ring-gray-300",
+};
+
+
+const sizes = {
+  sm: "h-9 px-4 text-sm",
+  md: "h-12 px-6 text-base",
+  lg: "h-14 px-8 text-lg",
+};
+
+
+const widthClass = fullWidth ? "w-full" : "w-auto";
+
+
+const baseClasses =
+  "rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 inline-flex items-center justify-center gap-2 no-underline";
+
+
+const stateClasses = disabled
+  ? "opacity-50 cursor-not-allowed pointer-events-none"
+  : "cursor-pointer";
+
+
+const linkClasses = `${baseClasses} ${variants[variant]} ${sizes[size]} ${widthClass} ${stateClasses} ${className}`;
+---
+
+<a
+  id={id}
+  href={disabled ? undefined : href}
+  target={target}
+  rel={target === "_blank" ? "noopener noreferrer" : undefined}
+  class={linkClasses}
+  aria-disabled={disabled ? "true" : undefined}
+>
+  <slot />
+
+  {
+    target === "_blank" && (
+      <svg
+        class="w-4 h-4"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+        />
+      </svg>
+    )
+  }
+</a>
