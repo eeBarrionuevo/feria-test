@@ -1,0 +1,83 @@
+---
+const {
+  title,
+  company,
+  companyLogo,
+  date,
+  time,
+  href,
+  accentColor = "bg-blime-bright",
+} = Astro.props;
+---
+
+<article
+  class="bg-black rounded-xl p-4 flex flex-col space-y-3 text-white  transform transition-transform duration-300 ease-out hover:scale-[1.05] hover:bg-black/90"
+>
+  <h2 class="text-base font-semibold leading-tight line-clamp-2">
+    {title}
+  </h2>
+
+  <div class="flex items-center gap-2">
+    <img
+      src={companyLogo}
+      alt={`Logo de ${company}`}
+      loading="lazy"
+      class="w-6 h-6 rounded-full object-cover"
+    />
+    <span class="text-sm font-semibold">{company}</span>
+  </div>
+
+  <div class="flex items-center gap-2 text-sm">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="w-4 h-4 flex-shrink-0"
+      fill="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M7 11h2v2H7zm0 4h2v2H7zm4-4h2v2h-2zm0 4h2v2h-2zm4-4h2v2h-2zm0 4h2v2h-2z"
+      ></path>
+      <path
+        d="M5 22h14c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2h-2V2h-2v2H9V2H7v2H5
+        c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2zM19 8l.001 12H5V8h14z"
+      ></path>
+    </svg>
+    <time datetime={date}>{date}</time>
+  </div>
+
+  <div class="flex items-center gap-2 text-sm">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="w-4 h-4 flex-shrink-0"
+      fill="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M12 2C6.486 2 2 6.486 2 12s4.486
+        10 10 10 10-4.486 10-10S17.514 2
+        12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8
+        8-8 8 3.589 8 8-3.589 8-8 8z"
+      ></path>
+      <path d="M13 7h-2v5.414l3.293
+        3.293 1.414-1.414L13 11.586z"></path>
+    </svg>
+    <time datetime={time}>{time}</time>
+  </div>
+
+  <a
+    href={href}
+    class={`flex items-center justify-center ${accentColor} text-black px-4 py-1 rounded-full transition-colors hover:opacity-90`}
+  >
+    <div class="text-sm">Ir al auditorio</div>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="w-6 h-6 ml-1"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path
+        d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"
+      ></path>
+    </svg>
+  </a>
+</article>

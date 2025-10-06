@@ -1,0 +1,18 @@
+---
+const {
+  title,
+  description,
+  accentColor = "text-blime-bright/100",
+} = Astro.props;
+---
+
+<article
+  class="bg-white/10 rounded-xl px-2 py-3 text-sm my-2 transform transition-transform duration-300 ease-out hover:scale-[1.05] hover:bg-white/20"
+>
+  <div class={`text-base font-semibold leading-6 mb-1 ${accentColor}`}>
+    {title}
+  </div>
+  <div class="text-sm text-gray-100 leading-snug">
+    {description}
+  </div>
+</article>

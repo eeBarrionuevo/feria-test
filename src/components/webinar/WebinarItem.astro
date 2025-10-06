@@ -1,0 +1,65 @@
+---
+const {
+  time,
+  title,
+  company,
+  logo,
+  speaker,
+  role,
+  href = "/audience", 
+} = Astro.props;
+---
+
+<article
+  class="bg-black text-white rounded-2xl shadow-xl mx-4 my-4 px-6 py-4 flex flex-col sm:flex-row items-center gap-2 sm:gap-6"
+>
+
+  <time datetime={`2025-11-27T${time}`} class="text-2xl sm:text-4xl font-bold">
+    {time}
+  </time>
+
+
+  <div
+    class="flex-1 flex flex-col sm:flex-row items-center justify-between gap-6"
+  >
+    <div class="flex flex-col text-center sm:text-left">
+
+      <h3 class="text-lg font-semibold leading-5 mb-1">{title}</h3>
+
+  
+      <span class="text-sm font-semibold text-blime-bright mb-2 block">
+        {company}
+      </span>
+
+      <div class="flex items-center justify-center sm:justify-start gap-3">
+        <img
+          src={logo}
+          alt={`Logo de ${company}`}
+          loading="lazy"
+          class="w-10 h-10 rounded-full object-cover border border-white/10"
+        />
+        <div class="text-left">
+          <p class="text-base font-medium">{speaker}</p>
+          <p class="text-sm font-light text-blime-bright">{role}</p>
+        </div>
+      </div>
+    </div>
+
+    <a
+      href={href}
+      class="flex-shrink-0 w-full sm:w-fit flex items-center justify-center gap-2 bg-blime-bright text-black px-4 py-2 rounded-full text-sm font-medium hover:bg-blime-bright/80 transition-colors"
+    >
+      Ir al auditorio
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="w-5 h-5"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+      >
+        <path
+          d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"
+        ></path>
+      </svg>
+    </a>
+  </div>
+</article>

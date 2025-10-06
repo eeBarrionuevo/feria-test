@@ -225,3 +225,44 @@ export const recommendations = [
       "Capacítate en nuevas tendencias y busca certificaciones que respalden tus competencias.",
   },
 ];
+
+
+export const webinarsByDate = [
+  {
+    date: "27 de noviembre",
+    events: [
+      {
+        time: "13:00",
+        title: "Potencia tu perfil en LinkedIn y atrae reclutadores",
+        company: "Ferreyros",
+        logo: "https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg",
+        speaker: "María Gonzales",
+        role: "Especialista en RRHH",
+        href: "/audience",
+      },
+      {
+        time: "15:30",
+        title: "Cómo prepararte para entrevistas virtuales",
+        company: "BBVA",
+        logo: "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg",
+        speaker: "Javier Morales",
+        role: "Gerente de Talento",
+        href: "/audience",
+      },
+    ],
+  },
+  {
+    date: "28 de noviembre",
+    events: [
+      {
+        time: "10:00",
+        title: "Diseña tu CV para atraer reclutadores",
+        company: "Google Perú",
+        logo: "https://images.pexels.com/photos/3771087/pexels-photo-3771087.jpeg",
+        speaker: "Lucía Pérez",
+        role: "Talent Acquisition Lead",
+        href: "/audience",
+      },
+    ],
+  },
+];

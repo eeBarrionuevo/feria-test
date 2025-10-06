@@ -1,18 +1,114 @@
 ---
-export async function getStaticPaths() {
+import BasicLayout from "../../layouts/BasicLayout.astro";
+import StandImage from "../../assets/images/b-01.jpeg";
+import LinkButtonCommon from "../../components/buttons/LinkButtonCommon.astro";
 
+export async function getStaticPaths() {
   return [
-    { params: { id: '1' } },
-    { params: { id: '2' } },
-    { params: { id: '3' } },
+    { params: { id: "1" } },
+    { params: { id: "2" } },
+    { params: { id: "3" } },
   ];
 }
 
 const { id } = Astro.params;
+
+let isModalOpen = false;
+
+function openModal() {
+  isModalOpen = true;
+}
+
+function closeModal() {
+  isModalOpen = false;
+}
 ---
 
-<html>
-  <body>
-    <h1>Página dinámica con ID: {id}</h1>
-  </body>
-</html>
+<BasicLayout>
+  <section
+    class="relative bg-cover bg-center min-h-screen flex items-center justify-center"
+    style={`background-image: url(${StandImage.src});`}
+  >
+    <div class="absolute inset-0 flex flex-col items-center justify-center">
+      <div
+        class="bg-white p-1 sm:p-2 rounded-lg shadow-lg flex items-center justify-center"
+        style="transform: translateY(-20px);"
+      >
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/0/05/Aceros_Logo.png"
+          alt="Logo de la empresa"
+          class="w-40 sm:w-72 md:w-40 lg:w-70 object-contain transition-transform duration-500 ease-in-out hover:scale-105"
+        />
+      </div>
+    </div>
+
+    <div
+      class="absolute inset-0 flex flex-col items-center justify-start mt-20"
+    >
+      <div class="relative animate-bounce hover:animate-none inline-block">
+        <span
+          class="absolute -top-3 -right-3 bg-blime-bright text-black text-xs font-bold px-2 py-1 rounded-full animate-pulse"
+        >
+          ¡Nuevo!
+        </span>
+        <LinkButtonCommon
+          id="openModalBtn"
+          href="#"
+          variant="primary"
+          size="lg"
+          className="shadow-2xl hover:shadow-3xl transition-shadow"
+        >
+          Ver Ofertas Laborales
+        </LinkButtonCommon>
+      </div>
+    </div>
+
+    <div
+      id="myModal"
+      class="hidden fixed inset-0 bg-black/80 flex items-center justify-center z-50"
+    >
+      <div class="bg-blime-bright rounded-lg shadow-xl max-w-2xl w-full p-6 relative">
+        <button
+          id="closeModal"
+          class="absolute top-2 right-2 text-gray-500 hover:text-gray-800"
+        >
+          ✕
+        </button>
+        <h2 class="text-xl font-bold mb-4">Oportunidades Laborales</h2>
+        <ul class="space-y-2">
+          <li class="p-2 border rounded">Desarrollador Frontend</li>
+          <li class="p-2 border rounded">Desarrollador Backend</li>
+          <li class="p-2 border rounded">UX/UI Designer</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</BasicLayout>
+
+<script>
+
+  const openBtn = document.getElementById("openModalBtn");
+  const closeBtn = document.getElementById("closeModal");
+  const modal = document.getElementById("myModal");
+
+  if (openBtn && closeBtn && modal) {
+  
+    openBtn.addEventListener("click", (e) => {
+      e.preventDefault(); // 
+      modal.classList.remove("hidden");
+    });
+
+
+    closeBtn.addEventListener("click", () => {
+      modal.classList.add("hidden");
+    });
+
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        modal.classList.add("hidden");
+      }
+    });
+  } else {
+    console.warn("Algunos elementos del modal no se encontraron en el DOM.");
+  }
+</script>

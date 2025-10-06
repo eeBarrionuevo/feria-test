@@ -1,0 +1,45 @@
+---
+import WebinarItem from "./WebinarItem.astro";
+
+const { date, events = [] } = Astro.props;
+const id = `accordion-${date.replace(/\s+/g, "-")}`;
+---
+
+<div
+  class="accordion w-full bg-white/10 py-2 border-2 border-dashed border-gray-50 rounded-xl mb-6"
+>
+  <button
+    type="button"
+    class="accordion-btn w-full flex justify-between items-center gap-3 px-4 py-3 text-left font-medium text-2xl text-white transition-colors"
+    aria-expanded="false"
+    aria-controls={id}
+    onclick={`toggleAccordion('${id}', this)`}
+  >
+    <div class="flex items-center justify-center gap-4">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="w-7 h-7"
+        viewBox="0 0 24 24"
+        style="fill: white;"
+      >
+        <path
+          d="M7 11h2v2H7zm0 4h2v2H7zm4-4h2v2h-2zm0 4h2v2h-2zm4-4h2v2h-2zm0 4h2v2h-2z"
+        ></path>
+        <path
+          d="M5 22h14c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2h-2V2h-2v2H9V2H7v2H5c-1.103 
+          0-2 .897-2 2v14c0 1.103.897 2 2 2zM19 8l.001 12H5V8h14z"
+        ></path>
+      </svg>
+      {date}
+    </div>
+
+    <span class="icon transform transition-transform duration-300">▼</span>
+  </button>
+
+  <div
+    id={id}
+    class="accordion-content overflow-hidden transition-all duration-500 ease-in-out max-h-0 opacity-0"
+  >
+    {events.map((event: any) => <WebinarItem {...event} />)}
+  </div>
+</div>
