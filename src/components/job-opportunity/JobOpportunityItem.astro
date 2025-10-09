@@ -1,0 +1,58 @@
+---
+export interface Props {
+  id:string;
+  title: string;
+  workMode: string;
+  href?: string;
+  company?: string;
+  location?: string;
+  vacancies?: number;
+}
+
+const {id, title, workMode, href, company, location, vacancies } = Astro.props;
+---
+
+<a href={href} class="block">
+  <div
+    data-job-id={id}
+    class="text-black rounded-xl border-dashed border-black border-[2px] px-4 py-2 my-1 shadow-sm hover:shadow-md transition-all cursor-pointer"
+  >
+    <div class="flex items-center justify-between">
+      {/* Contenido principal */}
+      <div class="flex flex-col gap-1">
+        {company && <span class="text-sm">{company}</span>}
+        <h2 class="text-lg font-semibold ">{title}</h2>
+        <p class="text-sm ">
+          Modalidad: <span class="font-medium">{workMode}</span>
+        </p>
+        {
+          location && (
+            <p class="text-sm ">
+              Ubicación: <span class="font-medium">{location}</span>
+            </p>
+          )
+        }
+        <!-- {
+          vacancies !== undefined && (
+            <p class="text-sm ">
+              Vacantes: <span class="font-medium">{vacancies}</span>
+            </p>
+          )
+        } -->
+      </div>
+
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="black"
+        class="w-6 h-6 group-hover:text-white-600 transition-colors"
+      >
+        <path
+          d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"
+        ></path>
+      </svg>
+    </div>
+  </div>
+</a>

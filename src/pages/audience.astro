@@ -1,13 +1,12 @@
 ---
 import BasicLayout from "../layouts/BasicLayout.astro";
+import AudienceBackgroundImage from "../assets/images/bg-audience.jpg";
 ---
 
 <BasicLayout>
   <section
     class="relative bg-cover bg-center min-h-screen flex items-center justify-center"
-    style="
-    background-image: url('https://wallpapers.com/images/featured/fondods-de-teatro-dhb5kq69nqqd8erp.jpg');
-  "
+    style={`background-image: url(${AudienceBackgroundImage.src});`}
   >
     <div
       class="w-full max-w-5xl aspect-video bg-black/80 rounded-xl overflow-hidden shadow-lg"

@@ -24,7 +24,8 @@ export const logos = [
 export const welcomeWebinarInfo = [
   {
     id: 1,
-    image: "https://images.pexels.com/photos/32845698/pexels-photo-32845698.jpeg",
+    image:
+      "https://images.pexels.com/photos/32845698/pexels-photo-32845698.jpeg",
     title: "ENTREVISTAS DE TRABAJO",
     subtitle: "¿Quieres destacar en cada entrevista?",
     description:
@@ -40,7 +41,8 @@ export const welcomeWebinarInfo = [
   },
   {
     id: 3,
-    image: "https://images.pexels.com/photos/31869843/pexels-photo-31869843.jpeg",
+    image:
+      "https://images.pexels.com/photos/31869843/pexels-photo-31869843.jpeg",
     title: "CREA TU MARCA PERSONAL",
     subtitle: "Haz que tu talento hable por ti.",
     description:
@@ -226,7 +228,6 @@ export const recommendations = [
   },
 ];
 
-
 export const webinarsByDate = [
   {
     date: "27 de noviembre",
@@ -264,5 +265,150 @@ export const webinarsByDate = [
         href: "/audience",
       },
     ],
+  },
+];
+
+export const jobOpportunities = [
+  {
+    id: "job-1",
+    companyName: "Tech Solutions S.A.",
+    jobTitle: "Ingeniero de Automatización",
+    mainResponsibilities: [
+      "Diseñar y supervisar procesos automatizados",
+      "Coordinar con el área de producción",
+      "Elaborar reportes técnicos",
+    ],
+    requirements: {
+      degree: "Ingeniería Industrial / Mecánica / Sistemas",
+      experience: "3-5 años",
+      softSkills: [
+        "Trabajo en equipo",
+        "Resolución de problemas",
+        "Comunicación",
+      ],
+      technicalSkills: [
+        "Programación PLC",
+        "Automatización de procesos",
+        "Elaboración de reportes",
+      ],
+    },
+    vacancies: 3,
+    location: "Lima",
+    workMode: "Híbrido",
+  },
+  {
+    id: "job-2",
+    companyName: "Innovatech Corp",
+    jobTitle: "Desarrollador de Software",
+    mainResponsibilities: [
+      "Desarrollar y mantener aplicaciones de software",
+      "Colaborar con equipos multidisciplinarios",
+      "Documentar el código y mantener reportes técnicos",
+    ],
+    requirements: {
+      degree: "Ciencias de la Computación / Ingeniería de Software",
+      experience: "2-4 años",
+      softSkills: [
+        "Pensamiento analítico",
+        "Adaptabilidad",
+        "Trabajo en equipo",
+      ],
+      technicalSkills: ["JavaScript", "React", "APIs REST"],
+    },
+    vacancies: 2,
+    location: "Lima",
+    workMode: "Remoto",
+  },
+  {
+    id: "job-3",
+    companyName: "Global Manufacturing Ltd",
+    jobTitle: "Supervisor de Producción",
+    mainResponsibilities: [
+      "Supervisar operaciones diarias de producción",
+      "Implementar protocolos de seguridad",
+      "Preparar reportes de producción",
+    ],
+    requirements: {
+      degree: "Ingeniería Industrial / Gestión de Producción",
+      experience: "5+ años",
+      softSkills: ["Liderazgo", "Gestión del tiempo", "Comunicación"],
+      technicalSkills: [
+        "Manufactura esbelta",
+        "Optimización de procesos",
+        "Herramientas de reporte",
+      ],
+    },
+    vacancies: 1,
+    location: "Lima",
+    workMode: "Presencial",
+  },
+  {
+    id: "job-4",
+    companyName: "Global Manufacturing Ltd",
+    jobTitle: "Supervisor de Producción",
+    mainResponsibilities: [
+      "Supervisar operaciones diarias de producción",
+      "Implementar protocolos de seguridad",
+      "Preparar reportes de producción",
+    ],
+    requirements: {
+      degree: "Ingeniería Industrial / Gestión de Producción",
+      experience: "5+ años",
+      softSkills: ["Liderazgo", "Gestión del tiempo", "Comunicación"],
+      technicalSkills: [
+        "Manufactura esbelta",
+        "Optimización de procesos",
+        "Herramientas de reporte",
+      ],
+    },
+    vacancies: 1,
+    location: "Lima",
+    workMode: "Presencial",
+  },
+  {
+    id: "job-5",
+    companyName: "Global Manufacturing Ltd",
+    jobTitle: "Supervisor de Producción",
+    mainResponsibilities: [
+      "Supervisar operaciones diarias de producción",
+      "Implementar protocolos de seguridad",
+      "Preparar reportes de producción",
+    ],
+    requirements: {
+      degree: "Ingeniería Industrial / Gestión de Producción",
+      experience: "5+ años",
+      softSkills: ["Liderazgo", "Gestión del tiempo", "Comunicación"],
+      technicalSkills: [
+        "Manufactura esbelta",
+        "Optimización de procesos",
+        "Herramientas de reporte",
+      ],
+    },
+    vacancies: 1,
+    location: "Lima",
+    workMode: "Presencial",
+  },
+  {
+    id: "job-6",
+    companyName: "Global Manufacturing Ltd",
+    jobTitle: "Supervisor de Producción",
+    mainResponsibilities: [
+      "Supervisar operaciones diarias de producción",
+      "Implementar protocolos de seguridad",
+      "Preparar reportes de producción",
+    ],
+    requirements: {
+      degree: "Ingeniería Industrial / Gestión de Producción",
+      experience: "5+ años",
+      softSkills: ["Liderazgo", "Gestión del tiempo", "Comunicación"],
+      technicalSkills: [
+        "Manufactura esbelta",
+        "Optimización de procesos",
+        "Herramientas de reporte",
+      ],
+    },
+    vacancies: 1,
+    location: "Lima",
+    workMode: "Presencial",
   },
 ];

@@ -2,6 +2,8 @@
 import BasicLayout from "../../layouts/BasicLayout.astro";
 import StandImage from "../../assets/images/b-01.jpeg";
 import LinkButtonCommon from "../../components/buttons/LinkButtonCommon.astro";
+import { jobOpportunities } from "../../data/data";
+import JobOpportunityItem from "../../components/job-opportunity/JobOpportunityItem.astro";
 
 export async function getStaticPaths() {
   return [
@@ -54,7 +56,7 @@ function closeModal() {
         <LinkButtonCommon
           id="openModalBtn"
           href="#"
-          variant="primary"
+          variant="secondary"
           size="lg"
           className="shadow-2xl hover:shadow-3xl transition-shadow"
         >
@@ -65,50 +67,181 @@ function closeModal() {
 
     <div
       id="myModal"
-      class="hidden fixed inset-0 bg-black/80 flex items-center justify-center z-50"
+      class="hidden fixed inset-0 bg-black/40 flex items-center justify-center z-50"
     >
-      <div class="bg-blime-bright rounded-lg shadow-xl max-w-2xl w-full p-6 relative">
-        <button
-          id="closeModal"
-          class="absolute top-2 right-2 text-gray-500 hover:text-gray-800"
-        >
-          ✕
-        </button>
-        <h2 class="text-xl font-bold mb-4">Oportunidades Laborales</h2>
-        <ul class="space-y-2">
-          <li class="p-2 border rounded">Desarrollador Frontend</li>
-          <li class="p-2 border rounded">Desarrollador Backend</li>
-          <li class="p-2 border rounded">UX/UI Designer</li>
-        </ul>
+      <div
+        class="bg-blime-bright rounded-2xl shadow-xl max-w-2xl w-full h-[75vh] overflow-hidden relative"
+      >
+        <div class="absolute inset-0 rounded-2xl">
+          <div id="jobListView" class="h-full overflow-y-auto">
+            <div
+              class="sticky top-0 z-30 flex items-center justify-between bg-blime-bright border-b border-black/10 px-6 py-4 shadow-sm"
+            >
+              <h2 class="text-xl md:text-2xl font-bold text-black">
+                Ofertas Laborales
+              </h2>
+              <button
+                id="closeModal"
+                class="text-black hover:text-gray-700 text-2xl leading-none"
+              >
+                ✕
+              </button>
+            </div>
+
+            <div class="flex flex-col px-6 py-4 space-y-4">
+              {
+                jobOpportunities.map((job) => (
+                  <JobOpportunityItem
+                    id={job.id}
+                    title={job.jobTitle}
+                    workMode={job.workMode}
+                    company={job.companyName}
+                    location={job.location}
+                    vacancies={job.vacancies}
+                  />
+                ))
+              }
+            </div>
+          </div>
+
+          <div id="jobDetailView" class="hidden absolute inset-0 flex flex-col">
+            <div
+              class="sticky top-0 z-30 flex items-center justify-between bg-blime-bright border-b border-black/10 px-6 py-4 shadow-sm"
+            >
+              <h2 class="text-xl md:text-2xl font-bold text-black">
+                Detalle de la Oferta
+              </h2>
+              <button
+                id="backToList"
+                class="text-black hover:text-gray-700 text-base font-semibold cursor-pointer"
+              >
+                ← Volver
+              </button>
+            </div>
+
+            <div class="flex-1 flex flex-col overflow-y-auto p-6 space-y-4">
+              <div>
+                <h3 id="jobTitle" class="text-2xl font-bold text-black mb-2">
+                </h3>
+                <p id="jobCompany" class="text-lg text-gray-800 font-semibold">
+                </p>
+              </div>
+
+              <div class="flex items-center gap-2 text-gray-600 text-sm">
+                <span id="jobLocation"></span>
+              </div>
+
+              <div class="border-t border-black pt-4">
+                <h4 class="text-lg font-semibold text-black mb-2">
+                  Descripción
+                </h4>
+                <p id="jobDescription" class="text-gray-700 leading-relaxed">
+                </p>
+
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi
+                  aliquid suscipit sapiente vitae labore porro commodi nesciunt
+                  at odio expedita, laborum beatae quod asperiores provident
+                  inventore voluptate illum aliquam aperiam dolorem corrupti.
+                  Corrupti amet tenetur ipsam ut unde tempora, voluptate
+                  blanditiis facilis earum nulla quod in? Dolorem vero modi
+                  dolor ad facilis? Eius at saepe molestias quae perspiciatis,
+                  fuga laborum voluptatibus quod atque, magni illum quasi iste
+                  vero odio. Reiciendis assumenda itaque voluptate molestiae
+                  nulla dicta recusandae, dolorum aut fugiat ducimus,
+                  necessitatibus at consequatur totam iusto odit animi minus
+                  voluptatibus ipsa debitis. Molestiae dignissimos molestias nam
+                  vitae reprehenderit laborum ea.
+                </p>
+              </div>
+            </div>
+            <div
+              class="mt-auto bg-blime-bright border-t border-black/10 px-6 py-4"
+            >
+              <button
+                class="w-full bg-black text-white py-3 px-6 rounded-lg hover:bg-gray-800 transition-colors font-semibold"
+              >
+                Postular a esta oferta
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 </BasicLayout>
 
-<script>
+<script define:vars={{ jobOpportunities }}>
+  const jobData = {};
+  jobOpportunities.forEach((job) => {
+    jobData[job.id] = job;
+  });
 
   const openBtn = document.getElementById("openModalBtn");
   const closeBtn = document.getElementById("closeModal");
   const modal = document.getElementById("myModal");
+  const jobListView = document.getElementById("jobListView");
+  const jobDetailView = document.getElementById("jobDetailView");
+  const backToListBtn = document.getElementById("backToList");
+
+  function showJobList() {
+    jobListView.classList.remove("hidden");
+    jobDetailView.classList.add("hidden");
+  }
+
+  function showJobDetail(jobId) {
+    const job = jobData[jobId];
+
+    if (!job) {
+      console.error("No se encontró la oferta con ID:", jobId);
+      return;
+    }
+
+    document.getElementById("jobTitle").textContent = job.jobTitle;
+    document.getElementById("jobCompany").textContent = job.companyName;
+    document.getElementById("jobLocation").textContent =
+      `${job.location} • ${job.workMode} • ${job.vacancies} vacante${job.vacancies > 1 ? "s" : ""}`;
+    document.getElementById("jobDescription").textContent =
+      job.description || "No hay descripción disponible.";
+
+    jobListView.classList.add("hidden");
+    jobDetailView.classList.remove("hidden");
+  }
 
   if (openBtn && closeBtn && modal) {
-  
     openBtn.addEventListener("click", (e) => {
-      e.preventDefault(); // 
+      e.preventDefault();
+      showJobList();
       modal.classList.remove("hidden");
     });
 
-
     closeBtn.addEventListener("click", () => {
       modal.classList.add("hidden");
+      showJobList();
     });
 
     modal.addEventListener("click", (e) => {
       if (e.target === modal) {
         modal.classList.add("hidden");
+        showJobList();
       }
     });
   } else {
     console.warn("Algunos elementos del modal no se encontraron en el DOM.");
   }
+
+  if (backToListBtn) {
+    backToListBtn.addEventListener("click", showJobList);
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const jobItems = document.querySelectorAll("[data-job-id]");
+
+    jobItems.forEach((item) => {
+      item.addEventListener("click", () => {
+        const jobId = item.getAttribute("data-job-id");
+        showJobDetail(jobId);
+      });
+    });
+  });
 </script>
